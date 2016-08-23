@@ -1,6 +1,6 @@
 # v8 and v8js RPM binary spec
 
-These RPM were built to have an easy way to install the google's v8 javascript engine and v8js php extension for EL7 users.
+These RPM were built to have an easy way to install the [google's javascript engine v8 5.x](https://developers.google.com/v8/) and [v8js](https://github.com/phpv8/v8js) php extension for EL7 users.
 
 ## Install from RPM Package
 
