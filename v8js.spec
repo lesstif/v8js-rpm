@@ -5,7 +5,7 @@
 Name: v8js
 Summary: PHP extension for Google's V8 Javascript engine. 
 Version: 1.3.1
-Release: 1
+Release: 2
 License: PHP
 Group: Development/Tools
 URL: https://github.com/phpv8/v8js
