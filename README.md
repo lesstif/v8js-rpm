@@ -9,7 +9,7 @@ These RPM were built to have an easy way to install the [google's javascript eng
 
 ```bash
 $ wget https://github.com/lesstif/v8js-rpm/releases/download/5.2.371/v8-5.2.371-1.x86_64.rpm
-$ wget https://github.com/lesstif/v8js-rpm/releases/download/1.3.1-1/v8js-1.3.1-1.x86_64.rpm
+$ wget https://github.com/lesstif/v8js-rpm/releases/download/1.3.1-1/v8js-1.3.1-2.x86_64.rpm
 $ sudo yum localinstall v8*.rpm -y 
 ```
 
