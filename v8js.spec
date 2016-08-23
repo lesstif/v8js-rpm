@@ -1,9 +1,9 @@
 %define        pre_built_dir /home/lesstif/v8js
-%define        module_dir `php-config --extension-dir`
+%define        module_dir %(php-config --extension-dir)
 %define        ini_dir      /etc/php.d/
 
 Name: v8js
-Summary: PHP extension for Google's V8 Javascript engine. The extension allows you to execute Javascript code in a secure sandbox from PHP. The executed code can be restricted using a time limit and/or memory limit. This provides the possibility to execute untrusted code with confidence.
+Summary: PHP extension for Google's V8 Javascript engine. 
 Version: 1.3.1
 Release: 1
 License: PHP
@@ -13,9 +13,11 @@ Requires: v8
 BuildRoot: %{_tmppath}/%{name}
 
 %description
-%{summary}
+The extension allows you to execute Javascript code in a secure sandbox from PHP. The executed code can be restricted using a time limit and/or memory limit. This provides the possibility to execute untrusted code with confidence.
 
 %prep
+
+echo EXT_DIR=%{module_dir}
 
 %install
 rm -rf %{buildroot}
@@ -32,8 +34,21 @@ echo -e "; Enable v8js extension module\nextension=v8js.so" >  %{buildroot}/%{in
 
 %files
 %defattr(-,root,root,-)
-%{_sysconfdir}/*
+%{_sysconfdir}/php.d/*
 %{module_dir}/*
+
+%post
+
+## for Amazon Linux
+if [ -d "/usr/lib64/php/7.0/modules/" ]; then
+	ln -s /usr/lib64/php/modules/v8js.so /usr/lib64/php/7.0/modules/v8js.so
+fi
+
+%postun
+## for Amazon Linux
+if [ -d "/usr/lib64/php/7.0/modules/" ]; then
+	rm -f /usr/lib64/php/7.0/modules/v8js.so
+fi
 
 %changelog
 * Mon Aug 23 2016 KwangSeob Jeong <lesstif@gmail.com>
