@@ -1,7 +1,6 @@
 # v8 and v8js RPM binary spec
 
-
-
+These RPM were built to have an easy way to install the google's v8 javascript engine and v8js php extension for EL7 users.
 
 ## Install from RPM Package
 
@@ -10,11 +9,12 @@
 
 ```bash
 $ wget https://github.com/lesstif/v8js-rpm/releases/download/5.2.371/v8-5.2.371-1.x86_64.rpm
-$ wget https://github.com/lesstif/v8js-rpm/releases/download/5.2.371/v8js-1.3.1-1.x86_64.rpm
-$ sudo yum localinstall v8-5.2.371-1.x86_64.rpm -y 
+$ wget https://github.com/lesstif/v8js-rpm/releases/download/1.3.1-1/v8js-1.3.1-1.x86_64.rpm
+$ sudo yum localinstall v8*.rpm -y 
 ```
 
-## Building the RPM
+## Building the Binary RPM
+
 
 ### Prerequisites:
 
@@ -83,9 +83,9 @@ yum install gcc-c++ make libicu-devel
   make x64.release library=shared snapshot=on i18nsupport=on -j8
   ```
 
-### create binary rpm package
+### create v8 binary rpm package
 
-change */home/lesstif/v8* to your v8 directory.
+change */home/lesstif/v8* to your v8 checkout directory.
 
 ```bash
 rpmbuild -bb v8.spec --buildroot=/tmp/v8 --define="pre_built_dir /home/lesstif/v8"
@@ -115,3 +115,10 @@ rpmbuild -bb v8.spec --buildroot=/tmp/v8 --define="pre_built_dir /home/lesstif/v
   make test
   ```
 
+### create v8js binary rpm package
+
+change */home/lesstif/v8js* to your v8js checkout directory.
+
+```bash
+rpmbuild -bb v8js.spec --define="pre_built_dir /home/lesstif/v8js"
+```
